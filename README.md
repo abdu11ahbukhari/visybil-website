@@ -91,10 +91,10 @@ Full Firefly prompt list is below in chat (copy/paste-friendly). Quick version:
 
 | File | Used on | Aspect ratio |
 |---|---|---|
-| `images/hero-bg.jpg` | Home hero | 16:9 |
-| `images/process-bg.jpg` | Process page header | 21:9 |
-| `images/work-bg.jpg` | Work page header | 21:9 |
-| `images/faq-bg.jpg` | FAQ page header | 21:9 |
+| `images/hero-bg.png` | Home hero | 16:9 |
+| `images/process-bg.png` | Process page header | 21:9 |
+| `images/work-bg.png` | Work page header | 21:9 |
+| `images/faq-bg.png` | FAQ page header | 21:9 |
 
 Once generated: create an `images` folder in the repo (same method as `examples` in step 4), upload all 4 files there, commit. Each page already references its exact filename, low-opacity and desaturated via CSS (`mix-blend-mode: screen`) for the double-exposure look — nothing else to change. If a file isn't there yet, the page just quietly shows no photo (no broken-image icon) until you add it.
 
@@ -117,7 +117,7 @@ Once generated: create an `images` folder in the repo (same method as `examples`
 ## Still placeholders
 
 - The 4 background photos (see step 5).
-- Optionally, a 5th background photo for `beyond.html` (`images/beyond-bg.jpg`), if you want one later, same double-exposure treatment.
+- Optionally, a 5th background photo for `beyond.html` (`images/beyond-bg.png`), if you want one later, same double-exposure treatment.
 - A client testimonial: there isn't a dedicated section for one right now; let me know if you want one added back in once you have a quote to use.
 
 The home page no longer has a separate contact form, just the Calendly booking widget under "Let's Talk."
