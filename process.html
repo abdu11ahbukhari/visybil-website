@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Process | Visybil</title>
+<meta name="description" content="How Visybil actually works: scripts, filming, editing, QA, and posting, in four steps.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="glow"></div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="logo-group">
+    <a href="index.html" class="logo"><img src="visybil-logo.svg" alt="Visybil"></a>
+    <span class="nav-tag">Content, handled.</span>
+  </div>
+  <div class="nav-links">
+    <a href="index.html#why">Why Us</a>
+    <a href="process.html" class="active">Process</a>
+    <a href="work.html">Work</a>
+    <a href="faq.html">FAQ</a>
+    <a href="beyond.html" class="alt">What Else We Do</a>
+  </div>
+  <div class="nav-cta">
+    <a href="index.html#contact" class="btn btn-primary"><span>Book a Call</span></a>
+  </div>
+  <button class="burger" id="burgerBtn" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose" aria-label="Close menu">×</button>
+  <a href="index.html#why">Why Us</a>
+  <a href="process.html" class="active">Process</a>
+  <a href="work.html">Work</a>
+  <a href="faq.html">FAQ</a>
+  <a href="beyond.html" class="alt">What Else We Do</a>
+</div>
+
+<main>
+
+  <!-- ============ PAGE HERO ============ -->
+  <section class="page-hero">
+    <!-- PLACEHOLDER PHOTO: drop images/process-bg.jpg in place — see photo brief for the prompt. -->
+    <img class="bg-photo" src="images/process-bg.jpg" alt="" onerror="this.style.display='none'">
+    <div class="wrap">
+      <div class="eyebrow">THE PROCESS</div>
+      <h1>How It Actually Works.</h1>
+      <p class="page-sub">Four steps. One team. No revisions loop with an editor who doesn't get it.</p>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS — FILMSTRIP ============ -->
+  <section id="process">
+    <div class="wrap">
+      <div class="filmstrip reveal">
+        <div class="filmstrip-edge"></div>
+        <div class="filmstrip-track">
+          <div class="filmstrip-marker"><span class="dot"></span>START</div>
+
+          <div class="filmstrip-step">
+            <div class="num-badge">01</div>
+            <h3>Scripts & Shot Lists</h3>
+            <p>Our creative strategists send you scripts, hooks, and a shot list, with clear instructions for you or your videographer to film.</p>
+          </div>
+
+          <div class="filmstrip-step">
+            <div class="num-badge">02</div>
+            <h3>You Film, We Take It From There</h3>
+            <p>Drop your raw footage into a shared drive. That's the last time you have to think about it.</p>
+          </div>
+
+          <div class="filmstrip-step">
+            <div class="num-badge">03</div>
+            <h3>Edit, Caption, QA</h3>
+            <p>Editors cut and caption to your standard. A creative strategist reviews every video for pacing, accuracy, and spelling before it moves forward.</p>
+          </div>
+
+          <div class="filmstrip-step">
+            <div class="num-badge">04</div>
+            <h3>We Post It</h3>
+            <p>Once it's approved, we publish straight to your platforms. Ready-to-post content, quality control already built in.</p>
+          </div>
+
+          <div class="filmstrip-marker"><span class="dot"></span>END</div>
+        </div>
+        <div class="filmstrip-edge"></div>
+      </div>
+
+      <div class="highlight-grid reveal">
+        <div class="highlight-item"><span class="dot"></span>Every video QA'd before it reaches you</div>
+        <div class="highlight-item"><span class="dot"></span>One account manager, one point of contact</div>
+        <div class="highlight-item"><span class="dot"></span>Scripts & shot lists so filming takes minutes</div>
+        <div class="highlight-item"><span class="dot"></span>Ready-to-post captions, no back-and-forth</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE CTA ============ -->
+  <section class="page-cta">
+    <div class="wrap">
+      <div class="reveal">
+        <h2>Ready to hand off your content?</h2>
+        <p>Book a short call and we'll walk through how this would run for your brand specifically.</p>
+        <div class="hero-actions">
+          <a href="index.html#contact" class="btn btn-primary"><span>Book a Call →</span></a>
+          <a href="work.html" class="btn btn-ghost"><span>See Our Work</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><img src="visybil-logo.svg" alt="Visybil"></div>
+        <div class="footer-tag">Content, handled.</div>
+      </div>
+      <div class="footer-contact">
+        <a href="tel:+12513732433">(251) 373-2433</a>
+        <a href="https://visybil.cc">visybil.cc</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Visybil Media. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+
+</body>
+</html>

@@ -3,454 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Visybil — Content, Handled.</title>
-<meta name="description" content="Visybil is a full-service content team. Scripts, editing, captions, QA, and posting — so you never have to manage a freelance editor again.">
+<title>Visybil | Content, Handled.</title>
+<meta name="description" content="Visybil is a full-service content team. Scripts, editing, captions, QA, and posting, so you never have to manage a freelance editor again.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<style>
-  /* ===================== RESET / BASE ===================== */
-  :root{
-    --bg: #17190F;
-    --bg-alt: #1E2115;
-    --panel: #21241A;
-    --line: rgba(245,246,238,0.14);
-    --line-strong: rgba(245,246,238,0.28);
-    --text: #F5F6EE;
-    --muted: #9CA48F;
-    --lime: #D6FF3B;
-    --lime-dim: #A8CC2E;
-    --maxw: 1200px;
-  }
-  *,*::before,*::after{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Space Grotesk', sans-serif;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-  img,svg{display:block;max-width:100%;}
-  a{color:inherit;text-decoration:none;}
-  ul{margin:0;padding:0;list-style:none;}
-  h1,h2,h3,p{margin:0;}
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
-  .eyebrow{
-    font-family:'Space Mono', monospace;
-    text-transform:uppercase;
-    letter-spacing:0.18em;
-    font-size:12px;
-    color:var(--lime);
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-  .eyebrow::before{
-    content:'';
-    width:8px;height:8px;
-    background:var(--lime);
-    display:inline-block;
-  }
-  .btn{
-    font-family:'Space Mono', monospace;
-    font-size:13px;
-    text-transform:uppercase;
-    letter-spacing:0.08em;
-    padding:15px 26px;
-    border:1px solid var(--line-strong);
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    white-space:nowrap;
-    cursor:pointer;
-    background:transparent;
-    color:var(--text);
-    transition:background .18s ease, color .18s ease, border-color .18s ease, transform .18s ease;
-  }
-  .btn-primary{
-    background:var(--lime);
-    color:#12140B;
-    border-color:var(--lime);
-  }
-  .btn-primary:hover{ background:transparent; color:var(--lime); transform:translateY(-2px); }
-  .btn-ghost{ background:transparent; color:var(--text); }
-  .btn-ghost:hover{ border-color:var(--lime); color:var(--lime); transform:translateY(-2px); }
-  .btn-ghost span, .btn-primary span{ display:inline-block; }
-
-  /* faint grain overlay */
-  body::after{
-    content:'';
-    position:fixed; inset:0;
-    pointer-events:none;
-    z-index:999;
-    opacity:0.035;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  }
-
-  /* ===================== NAV ===================== */
-  .nav{
-    position:fixed; top:0; left:0; right:0; z-index:500;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:22px 32px;
-    background:rgba(23,25,15,0.82);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav .logo{ display:flex; align-items:center; }
-  .nav .logo img{ height:60px; width:auto; display:block; }
-  .nav-links{ display:flex; align-items:center; gap:36px; }
-  .nav-links a{
-    font-family:'Space Mono', monospace;
-    font-size:12px;
-    text-transform:uppercase;
-    letter-spacing:0.1em;
-    color:var(--muted);
-    position:relative;
-    padding-bottom:4px;
-  }
-  .nav-links a:hover{ color:var(--text); }
-  .nav-links a::after{
-    content:''; position:absolute; left:0; bottom:0; height:1px; width:0;
-    background:var(--lime); transition:width .2s ease;
-  }
-  .nav-links a:hover::after{ width:100%; }
-  .nav-cta{ display:flex; align-items:center; gap:24px; }
-  .burger{ display:none; flex-direction:column; gap:5px; background:none; border:0; cursor:pointer; }
-  .burger span{ width:24px; height:2px; background:var(--text); display:block; }
-
-  .mobile-menu{
-    position:fixed; inset:0; background:var(--bg); z-index:600;
-    display:none; flex-direction:column; padding:100px 32px 40px;
-    gap:28px;
-  }
-  .mobile-menu.open{ display:flex; }
-  .mobile-menu a{
-    font-family:'Anton', sans-serif; font-size:34px; text-transform:uppercase;
-  }
-  .mobile-close{
-    position:absolute; top:26px; right:32px; background:none; border:0; color:var(--text);
-    font-size:28px; cursor:pointer;
-  }
-
-  /* ===================== HERO ===================== */
-  .hero{
-    padding:190px 0 100px;
-    position:relative;
-    border-bottom:1px solid var(--line);
-  }
-  .hero-grid-bg{
-    position:absolute; inset:0; z-index:-1; opacity:0.5;
-    background-image:
-      linear-gradient(var(--line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line) 1px, transparent 1px);
-    background-size:64px 64px;
-    mask-image:linear-gradient(180deg, rgba(0,0,0,0.7), transparent 85%);
-  }
-
-  /* ===================== HERO SCENE (double-exposure floating icons) ===================== */
-  .hero-scene{ position:absolute; inset:0; overflow:hidden; z-index:0; pointer-events:none; }
-  .hero .wrap{ position:relative; z-index:1; }
-  .big-reel{
-    position:absolute; top:-130px; right:-110px; width:420px; height:420px;
-    color:var(--lime); opacity:0.05; mix-blend-mode:screen;
-    animation:spin 90s linear infinite;
-  }
-  .big-reel-2{
-    position:absolute; bottom:-160px; left:-140px; width:460px; height:460px;
-    color:var(--text); opacity:0.035; mix-blend-mode:screen;
-    animation:spin 120s linear infinite reverse;
-  }
-  @keyframes spin{ to{ transform:rotate(360deg); } }
-  .float-icon{
-    position:absolute;
-    color:var(--lime);
-    opacity:0.16;
-    mix-blend-mode:screen;
-    animation:drift var(--dur,8s) ease-in-out infinite;
-    animation-delay:var(--delay,0s);
-  }
-  .float-icon.dim{ color:var(--text); opacity:0.09; }
-  .float-icon svg{ display:block; width:var(--sz,40px); height:var(--sz,40px); }
-  @keyframes drift{
-    0%,100%{ transform:translateY(0) rotate(0deg); }
-    50%{ transform:translateY(-18px) rotate(6deg); }
-  }
-  @media (max-width:900px){
-    .big-reel, .big-reel-2{ display:none; }
-    .float-icon{ display:none; }
-    .float-icon.keep-mobile{ display:block; }
-  }
-
-  .hero h1{
-    font-family:'Anton', sans-serif;
-    font-size:clamp(44px, 8vw, 104px);
-    line-height:0.98;
-    text-transform:uppercase;
-    letter-spacing:-0.01em;
-    max-width:16ch;
-    text-align:center;
-    margin-left:auto;
-    margin-right:auto;
-  }
-  .hero h1 em{ font-style:normal; color:var(--lime); }
-  .hero h1 .h1-sub{ font-size:0.62em; display:inline-block; margin-top:0.15em; }
-  .hero-sub{
-    margin-top:28px;
-    max-width:560px;
-    font-size:18px;
-    line-height:1.6;
-    color:var(--muted);
-    text-align:center;
-    margin-left:auto;
-    margin-right:auto;
-  }
-  .hero-actions{ display:flex; gap:18px; margin-top:44px; flex-wrap:wrap; }
-
-  /* ===================== MARQUEE ===================== */
-  .marquee-outer{
-    background:var(--lime);
-    color:#12140B;
-    overflow:hidden;
-    white-space:nowrap;
-    transform:rotate(-1.2deg) scale(1.02);
-    border-top:2px solid var(--bg);
-    border-bottom:2px solid var(--bg);
-    margin:-2px 0;
-  }
-  .marquee-track{
-    display:inline-flex;
-    animation:scroll 26s linear infinite;
-  }
-  .marquee-track span{
-    font-family:'Anton', sans-serif;
-    font-size:26px;
-    text-transform:uppercase;
-    padding:14px 24px;
-    display:inline-flex;
-    align-items:center;
-    gap:24px;
-  }
-  @keyframes scroll{
-    0%{ transform:translateX(0); }
-    100%{ transform:translateX(-50%); }
-  }
-
-  /* ===================== SECTION GENERIC ===================== */
-  section{ padding:120px 0; border-bottom:1px solid var(--line); position:relative; }
-  .section-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:40px; margin-bottom:64px; flex-wrap:wrap; }
-  .section-head.center{ flex-direction:column; align-items:center; text-align:center; }
-  .section-head h2{
-    font-family:'Anton', sans-serif;
-    font-size:clamp(30px, 4.2vw, 54px);
-    text-transform:uppercase;
-    line-height:1.05;
-    margin-top:14px;
-    max-width:16ch;
-  }
-  .section-head.center h2{ max-width:20ch; }
-  .section-head p{ max-width:360px; color:var(--muted); font-size:15px; line-height:1.6; }
-  .section-head.center p{ max-width:46ch; }
-
-  /* ===================== WHY / COMPARISON ===================== */
-  .compare{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); }
-  .compare-col{ background:var(--bg); padding:44px; }
-  .compare-col.hi{ background:var(--panel); }
-  .compare-col h3{
-    font-family:'Space Mono', monospace;
-    text-transform:uppercase; letter-spacing:0.1em; font-size:13px;
-    margin-bottom:28px; color:var(--muted);
-    display:flex; align-items:center; gap:10px;
-  }
-  .compare-col.hi h3{ color:var(--lime); }
-  .compare-col li{
-    display:flex; gap:14px; padding:14px 0; border-top:1px solid var(--line);
-    font-size:15px; line-height:1.5;
-  }
-  .compare-col li:first-child{ border-top:none; }
-  .compare-col.old li::before{ content:'×'; color:#8a8a7a; font-weight:700; }
-  .compare-col.hi li::before{ content:'✓'; color:var(--lime); font-weight:700; }
-
-  /* ===================== PROCESS — FILMSTRIP ===================== */
-  .filmstrip{ border:1px solid var(--line-strong); background:#101207; }
-  .filmstrip-edge{
-    height:14px;
-    background-color:#1c1f13;
-    background-image: radial-gradient(circle, var(--bg) 3px, transparent 3.5px);
-    background-size: 24px 14px;
-    background-position: 12px center;
-    background-repeat: repeat-x;
-  }
-  .filmstrip-track{ display:grid; grid-template-columns:70px repeat(4, 1fr) 70px; }
-  .filmstrip-marker{
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Space Mono', monospace; font-size:11px; color:var(--muted);
-    text-transform:uppercase; letter-spacing:0.14em;
-    writing-mode:vertical-rl;
-    border-left:1px solid var(--line);
-  }
-  .filmstrip-marker:first-child{ border-left:none; }
-  .filmstrip-marker .dot{ width:6px;height:6px;background:var(--lime); border-radius:50%; margin-bottom:10px; }
-  .filmstrip-step{ padding:40px 26px; border-left:1px solid var(--line); }
-  .filmstrip-step .num-badge{
-    width:32px;height:32px; border-radius:50%; background:var(--lime); color:#12140B;
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Space Mono', monospace; font-weight:700; font-size:12px; margin-bottom:20px;
-  }
-  .filmstrip-step h3{
-    font-family:'Space Grotesk', sans-serif; font-weight:700; text-transform:uppercase;
-    font-size:15px; letter-spacing:0.01em; margin-bottom:12px; line-height:1.3;
-  }
-  .filmstrip-step p{ color:var(--muted); font-size:13.5px; line-height:1.6; }
-
-  .highlight-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); border-top:none; margin-top:56px; }
-  .highlight-item{ background:var(--bg); padding:22px 26px; display:flex; gap:14px; align-items:center; font-size:14.5px; }
-  .highlight-item .dot{ width:8px;height:8px;background:var(--lime); flex-shrink:0; }
-
-  /* ===================== WORK ===================== */
-  .work-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:24px; }
-  .work-card{
-    aspect-ratio:9/13;
-    border:1px solid var(--line-strong);
-    position:relative;
-    overflow:hidden;
-    background:var(--panel);
-    transition:opacity .2s ease, transform .2s ease;
-  }
-  .work-card.hidden{ display:none; }
-  .work-card video{ width:100%; height:100%; object-fit:cover; display:block; background:#000; }
-  .work-note code{ font-family:'Space Mono', monospace; color:var(--lime); }
-  .work-note{
-    margin-top:36px; font-family:'Space Mono', monospace; font-size:12px;
-    color:var(--muted); text-transform:uppercase; letter-spacing:0.06em;
-    border-left:2px solid var(--lime); padding-left:14px;
-  }
-
-  /* ===================== NUMBERS / STATS ===================== */
-  .stats-grid{ display:grid; grid-template-columns:repeat(4, 1fr); border:1px solid var(--line); }
-  .stat-card{ padding:38px 28px; border-right:1px solid var(--line); }
-  .stat-card:last-child{ border-right:none; }
-  .stat-card .num{ font-family:'Anton', sans-serif; font-size:46px; color:var(--lime); line-height:1; }
-  .stat-card .label{ font-family:'Space Grotesk', sans-serif; font-weight:600; margin-top:12px; font-size:14.5px; }
-  .stat-card .sub{ font-family:'Space Mono', monospace; font-size:11px; color:var(--muted); margin-top:6px; text-transform:uppercase; letter-spacing:0.05em; }
-
-  /* ===================== BEYOND CONTENT ===================== */
-  .team-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
-  .team-card{ background:var(--bg); padding:40px 32px; }
-  .team-card .role-num{ font-family:'Space Mono', monospace; color:var(--lime); font-size:13px; }
-  .team-card h3{
-    font-family:'Anton', sans-serif; text-transform:uppercase; font-size:22px; margin-top:18px;
-  }
-  .team-card p{ margin-top:16px; color:var(--muted); font-size:14.5px; line-height:1.65; }
-
-  /* ===================== CONTACT ===================== */
-  .contact-inner{
-    display:grid; grid-template-columns:1.1fr 0.9fr; gap:70px; align-items:start;
-  }
-  .contact h2{
-    font-family:'Anton', sans-serif; font-size:clamp(32px,5vw,60px); text-transform:uppercase; line-height:1.02;
-  }
-  .contact-copy{ margin-top:22px; color:var(--muted); font-size:16px; line-height:1.7; max-width:48ch; }
-  .calendly-box{
-    border:1px dashed var(--line-strong);
-    background:var(--panel);
-    padding:40px 28px;
-    text-align:center;
-    min-height:300px;
-    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;
-  }
-  .calendly-box .icon{ font-size:30px; color:var(--lime); }
-  .calendly-box p{ color:var(--muted); font-size:13px; font-family:'Space Mono', monospace; line-height:1.7; max-width:32ch; }
-  .calendly-box strong{ color:var(--text); font-family:'Space Grotesk',sans-serif; font-size:16px; }
-
-  .contact-form{ margin-top:80px; border-top:1px solid var(--line); padding-top:56px; }
-  .contact-form .eyebrow{ margin-bottom:14px; }
-  .form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:32px; max-width:820px; }
-  .form-grid .full{ grid-column:1 / -1; }
-  .field label{ display:block; font-family:'Space Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); margin-bottom:8px; }
-  .field input, .field select, .field textarea{
-    width:100%; background:var(--bg); border:1px solid var(--line-strong); color:var(--text);
-    padding:13px 14px; font-family:'Space Grotesk', sans-serif; font-size:14px; appearance:none;
-  }
-  .field select{
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%239CA48F' d='M5 7l5 5 5-5z'/%3E%3C/svg%3E");
-    background-repeat:no-repeat; background-position:right 14px center;
-  }
-  .field input:focus, .field select:focus, .field textarea:focus{ outline:none; border-color:var(--lime); }
-  .field textarea{ min-height:120px; resize:vertical; }
-  .form-note{ margin-top:18px; font-family:'Space Mono', monospace; font-size:11.5px; color:var(--muted); }
-
-  /* ===================== FAQ ===================== */
-  .faq-list{ max-width:820px; border-top:1px solid var(--line); }
-  .faq-item{ border-bottom:1px solid var(--line); }
-  .faq-item summary{
-    padding:24px 0; font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:16px;
-    cursor:pointer; display:flex; justify-content:space-between; align-items:center; list-style:none; gap:20px;
-  }
-  .faq-item summary::-webkit-details-marker{ display:none; }
-  .faq-item summary::after{ content:'+'; font-family:'Space Mono', monospace; font-size:20px; color:var(--lime); flex-shrink:0; }
-  .faq-item[open] summary::after{ content:'−'; }
-  .faq-item .faq-a{ padding-bottom:24px; color:var(--muted); font-size:14.5px; line-height:1.65; max-width:65ch; }
-
-  /* ===================== FOOTER ===================== */
-  footer{ padding:60px 0 40px; }
-  .footer-top{
-    display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:30px;
-    padding-bottom:40px; border-bottom:1px solid var(--line);
-  }
-  .footer-logo img{ height:38px; width:auto; display:block; }
-  .footer-tag{ font-family:'Space Mono', monospace; font-size:12px; color:var(--muted); margin-top:10px; letter-spacing:0.04em; }
-  .footer-contact{ display:flex; flex-direction:column; gap:10px; align-items:flex-end; }
-  .footer-contact a{ font-family:'Space Mono', monospace; font-size:14px; color:var(--text); }
-  .footer-contact a:hover{ color:var(--lime); }
-  .footer-bottom{
-    display:flex; justify-content:space-between; padding-top:26px;
-    font-family:'Space Mono', monospace; font-size:11px; color:var(--muted); flex-wrap:wrap; gap:10px;
-  }
-
-  /* cursor glow */
-  #glow{
-    position:fixed; width:340px; height:340px; border-radius:50%;
-    background:radial-gradient(circle, rgba(214,255,59,0.10), transparent 70%);
-    pointer-events:none; z-index:1; transform:translate(-50%,-50%);
-    left:-500px; top:-500px;
-  }
-
-  /* reveal animation */
-  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
-  .reveal.in{ opacity:1; transform:translateY(0); }
-
-  /* ===================== RESPONSIVE ===================== */
-  @media (max-width:900px){
-    .nav-links{ display:none; }
-    .burger{ display:flex; }
-    .hero{ padding:150px 0 60px; }
-    .compare{ grid-template-columns:1fr; }
-    .filmstrip-track{ grid-template-columns:1fr; }
-    .filmstrip-marker{ writing-mode:horizontal-tb; padding:10px 0; border-left:none; border-top:1px solid var(--line); flex-direction:row; gap:8px; }
-    .filmstrip-marker .dot{ margin-bottom:0; }
-    .filmstrip-step{ border-left:none; border-top:1px solid var(--line); }
-    .highlight-grid{ grid-template-columns:1fr; }
-    .work-grid{ grid-template-columns:1fr 1fr; }
-    .stats-grid{ grid-template-columns:1fr 1fr; }
-    .stat-card{ border-bottom:1px solid var(--line); }
-    .stat-card:nth-child(2n){ border-right:none; }
-    .team-grid{ grid-template-columns:1fr; }
-    .contact-inner{ grid-template-columns:1fr; gap:40px; }
-    .form-grid{ grid-template-columns:1fr; }
-    .footer-top{ flex-direction:column; }
-    .footer-contact{ align-items:flex-start; }
-    .wrap{ padding:0 20px; }
-  }
-  @media (max-width:560px){
-    .work-grid{ grid-template-columns:1fr; }
-    .stats-grid{ grid-template-columns:1fr; }
-    .stat-card{ border-right:none; }
-  }
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -458,12 +18,16 @@
 
 <!-- ============ NAV ============ -->
 <nav class="nav">
-  <a href="#" class="logo"><img src="visybil-logo.svg" alt="Visybil"></a>
+  <div class="logo-group">
+    <a href="index.html" class="logo"><img src="visybil-logo.svg" alt="Visybil"></a>
+    <span class="nav-tag">Content, handled.</span>
+  </div>
   <div class="nav-links">
     <a href="#why">Why Us</a>
-    <a href="#process">Process</a>
-    <a href="#work">Work</a>
-    <a href="#contact">Contact</a>
+    <a href="process.html">Process</a>
+    <a href="work.html">Work</a>
+    <a href="faq.html">FAQ</a>
+    <a href="beyond.html" class="alt">What Else We Do</a>
   </div>
   <div class="nav-cta">
     <a href="#contact" class="btn btn-primary"><span>Book a Call</span></a>
@@ -476,9 +40,10 @@
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" id="mobileClose" aria-label="Close menu">×</button>
   <a href="#why">Why Us</a>
-  <a href="#process">Process</a>
-  <a href="#work">Work</a>
-  <a href="#contact">Contact</a>
+  <a href="process.html">Process</a>
+  <a href="work.html">Work</a>
+  <a href="faq.html">FAQ</a>
+  <a href="beyond.html" class="alt">What Else We Do</a>
 </div>
 
 <main>
@@ -486,6 +51,9 @@
   <!-- ============ HERO ============ -->
   <section class="hero">
     <div class="hero-grid-bg"></div>
+    <!-- PLACEHOLDER PHOTO: drop images/hero-bg.jpg in place — see photo brief for the prompt.
+         Hides itself automatically if the file doesn't exist yet. -->
+    <img class="bg-photo" src="images/hero-bg.jpg" alt="" onerror="this.style.display='none'">
     <div class="hero-scene">
       <svg class="big-reel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.7">
         <circle cx="12" cy="12" r="9"/><circle cx="12" cy="6.5" r="1.6"/><circle cx="17" cy="10.5" r="1.6"/>
@@ -561,31 +129,23 @@
     <div class="wrap">
       <div class="eyebrow">CONTENT PRODUCTION, DONE FOR YOU</div>
       <h1 style="margin-top:22px;">YOU FILM IT.<br><span class="h1-sub"><em>WE TURN IT</em> INTO CONTENT THAT ACTUALLY GETS POSTED.</span></h1>
-      <p class="hero-sub">Visybil is a full-service content team for business owners who are done managing freelance editors. Scripts, shot lists, editing, captions, quality control, and posting — one team handles it all, start to finish.</p>
+      <p class="hero-sub">Visybil is a full-service content team for business owners who are done managing freelance editors. Scripts, shot lists, editing, captions, quality control, and posting.<br>One team handles it all, start to finish.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn btn-primary"><span>Book a Call →</span></a>
-        <a href="#work" class="btn btn-ghost"><span>See Our Work</span></a>
+        <a href="work.html" class="btn btn-ghost"><span>See Our Work</span></a>
       </div>
     </div>
   </section>
 
-  <!-- ============ MARQUEE ============ -->
-  <div class="marquee-outer">
-    <div class="marquee-track">
-      <span>SCRIPTS ✦ SHOT LISTS ✦ EDITING ✦ CAPTIONS ✦ QA ✦ POSTING ✦ SCRIPTS ✦ SHOT LISTS ✦ EDITING ✦ CAPTIONS ✦ QA ✦ POSTING ✦</span>
-      <span>SCRIPTS ✦ SHOT LISTS ✦ EDITING ✦ CAPTIONS ✦ QA ✦ POSTING ✦ SCRIPTS ✦ SHOT LISTS ✦ EDITING ✦ CAPTIONS ✦ QA ✦ POSTING ✦</span>
-    </div>
-  </div>
-
-  <!-- ============ WHY / PROBLEM ============ -->
+  <!-- ============ WHY / PROBLEM + WHAT YOU GET (merged) ============ -->
   <section id="why">
     <div class="wrap">
       <div class="section-head reveal">
         <div>
           <div class="eyebrow">THE PROBLEM</div>
-          <h2>Hiring editors is a part-time job you didn't sign up for.</h2>
+          <h2 class="why-h2">Hiring editors is a part-time job you didn't ask for.</h2>
         </div>
-        <p>Managing freelance editors and amateur videographers eats your week — revisions, inconsistent quality, and content that still needs your notes before it's postable. Visybil replaces that whole cycle with one accountable team.</p>
+        <p>Managing freelance editors and amateur videographers eats your week: revisions, inconsistent quality, and content that still needs your notes before it's postable. Visybil replaces that whole cycle with one accountable team.</p>
       </div>
       <div class="compare reveal">
         <div class="compare-col old">
@@ -608,100 +168,6 @@
             <li>You get your week back</li>
           </ul>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PROCESS — FILMSTRIP ============ -->
-  <section id="process">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div>
-          <div class="eyebrow">THE PROCESS</div>
-          <h2>How it actually works.</h2>
-        </div>
-        <p>Four steps. One team. No revisions loop with an editor who doesn't get it.</p>
-      </div>
-
-      <div class="filmstrip reveal">
-        <div class="filmstrip-edge"></div>
-        <div class="filmstrip-track">
-          <div class="filmstrip-marker"><span class="dot"></span>START</div>
-
-          <div class="filmstrip-step">
-            <div class="num-badge">01</div>
-            <h3>Scripts & Shot Lists</h3>
-            <p>Our creative strategists send you scripts, hooks, and a shot list — with clear instructions for you or your videographer to film.</p>
-          </div>
-
-          <div class="filmstrip-step">
-            <div class="num-badge">02</div>
-            <h3>You Film, We Take It From There</h3>
-            <p>Drop your raw footage into a shared drive. That's the last time you have to think about it.</p>
-          </div>
-
-          <div class="filmstrip-step">
-            <div class="num-badge">03</div>
-            <h3>Edit, Caption, QA</h3>
-            <p>Editors cut and caption to your standard. A creative strategist reviews every video for pacing, accuracy, and spelling before it moves forward.</p>
-          </div>
-
-          <div class="filmstrip-step">
-            <div class="num-badge">04</div>
-            <h3>We Post It</h3>
-            <p>Once it's approved, we publish straight to your platforms. Ready-to-post content, quality control already built in.</p>
-          </div>
-
-          <div class="filmstrip-marker"><span class="dot"></span>END</div>
-        </div>
-        <div class="filmstrip-edge"></div>
-      </div>
-
-      <div class="highlight-grid reveal">
-        <div class="highlight-item"><span class="dot"></span>Every video QA'd before it reaches you</div>
-        <div class="highlight-item"><span class="dot"></span>One account manager, one point of contact</div>
-        <div class="highlight-item"><span class="dot"></span>Scripts & shot lists so filming takes minutes</div>
-        <div class="highlight-item"><span class="dot"></span>Ready-to-post captions, no back-and-forth</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ WORK ============ -->
-  <section id="work">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div>
-          <div class="eyebrow">THE WORK</div>
-          <h2>A look at what we ship.</h2>
-        </div>
-      </div>
-
-      <!-- Videos are pulled from the "examples" folder in the visybil-website GitHub repo via jsDelivr.
-           File names expected: examples/vis1.mp4 ... examples/vis8.mp4
-           If you rename/move files, update the src URLs below to match. -->
-      <div class="work-grid reveal" id="workGrid">
-        <div class="work-card video-card"><video autoplay muted loop playsinline preload="metadata"><source src="https://abdu11ahbukhari.github.io/visybil-website/examples/vis1.mp4" type="video/mp4"></video></div>
-        <div class="work-card video-card"><video autoplay muted loop playsinline preload="metadata"><source src="https://abdu11ahbukhari.github.io/visybil-website/examples/vis2.mp4" type="video/mp4"></video></div>
-        <div class="work-card video-card"><video autoplay muted loop playsinline preload="metadata"><source src="https://abdu11ahbukhari.github.io/visybil-website/examples/vis3.mp4" type="video/mp4"></video></div>
-        <div class="work-card video-card"><video autoplay muted loop playsinline preload="metadata"><source src="https://abdu11ahbukhari.github.io/visybil-website/examples/vis4.mp4" type="video/mp4"></video></div>
-        <div class="work-card video-card more-video hidden"><video autoplay muted loop playsinline preload="metadata"><source src="https://abdu11ahbukhari.github.io/visybil-website/examples/vis5.mp4" type="video/mp4"></video></div>
-        <div class="work-card video-card more-video hidden"><video autoplay muted loop playsinline preload="metadata"><source src="https://abdu11ahbukhari.github.io/visybil-website/examples/vis6.mp4" type="video/mp4"></video></div>
-        <div class="work-card video-card more-video hidden"><video autoplay muted loop playsinline preload="metadata"><source src="https://abdu11ahbukhari.github.io/visybil-website/examples/vis7.mp4" type="video/mp4"></video></div>
-        <div class="work-card video-card more-video hidden"><video autoplay muted loop playsinline preload="metadata"><source src="https://abdu11ahbukhari.github.io/visybil-website/examples/vis8.mp4" type="video/mp4"></video></div>
-      </div>
-      <div style="text-align:center; margin-top:40px;">
-        <button id="showMoreBtn" class="btn btn-ghost"><span>Show More Work ↓</span></button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ NUMBERS ============ -->
-  <section id="numbers">
-    <div class="wrap">
-      <div class="section-head center reveal">
-        <div class="eyebrow">WHAT YOU GET</div>
-        <h2>What you can count on.</h2>
-        <p>We're a young agency with one client so far — these are commitments, not vanity metrics.</p>
       </div>
       <div class="stats-grid reveal">
         <div class="stat-card">
@@ -735,129 +201,11 @@
         <div class="reveal">
           <div class="eyebrow">LET'S TALK</div>
           <h2 style="margin-top:18px;">See if Visybil is a fit for your content.</h2>
-          <p class="contact-copy">Book a short call. We'll look at what you're currently doing for content and walk you through how we'd run it instead — scripts, filming, editing, and posting.</p>
+          <p class="contact-copy">Book a short call. We'll look at what you're currently doing for content and walk you through how we'd run it instead, from scripts and filming to editing and posting.</p>
         </div>
         <div class="reveal">
           <div class="calendly-inline-widget" data-url="https://calendly.com/syedazki/30min?background_color=17190f&text_color=f5f6ee&primary_color=d6ff3b" style="min-width:280px;height:650px;border:1px solid var(--line-strong);"></div>
         </div>
-      </div>
-
-      <!-- CONTACT FORM: submits via mailto so it works with zero backend on GitHub Pages.
-           For real inbox delivery + spam handling, swap the <form> action for a service
-           like Formspree or Netlify Forms and remove the mailto JS below. -->
-      <div class="contact-form reveal">
-        <div class="eyebrow">OR SEND US THE DETAILS</div>
-        <h2 style="font-family:'Anton',sans-serif; text-transform:uppercase; font-size:clamp(24px,3vw,34px); margin-top:14px;">Tell us about your content.</h2>
-        <form class="form-grid" id="contactForm">
-          <div class="field">
-            <label for="f-name">Name</label>
-            <input id="f-name" name="name" type="text" required>
-          </div>
-          <div class="field">
-            <label for="f-email">Email</label>
-            <input id="f-email" name="email" type="email" required>
-          </div>
-          <div class="field">
-            <label for="f-company">Business / Brand</label>
-            <input id="f-company" name="company" type="text">
-          </div>
-          <div class="field">
-            <label for="f-format">Content Type</label>
-            <select id="f-format" name="format">
-              <option value="">Select format</option>
-              <option>Reels / Shorts</option>
-              <option>Long-Form Video</option>
-              <option>Talking Head</option>
-              <option>Mixed / Not Sure Yet</option>
-            </select>
-          </div>
-          <div class="field full">
-            <label for="f-message">Message</label>
-            <textarea id="f-message" name="message" placeholder="What are you currently doing for content, and where's it breaking down?"></textarea>
-          </div>
-          <div class="field full">
-            <button type="submit" class="btn btn-primary"><span>Send Message →</span></button>
-            <div class="form-note">Opens your email client with the details filled in — we'll reply within 1–2 business days.</div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ BEYOND CONTENT ============ -->
-  <section id="beyond">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div>
-          <div class="eyebrow">BEYOND CONTENT</div>
-          <h2>Content is the focus. It's not all we do.</h2>
-        </div>
-        <p>Content and video editing are the core of Visybil — that's what we lead with. Our team also covers a few other things clients regularly ask for.</p>
-      </div>
-      <div class="team-grid reveal">
-        <div class="team-card">
-          <div class="role-num">01</div>
-          <h3>Web Development</h3>
-          <p>Websites, landing pages, and web apps — built, launched, and kept running.</p>
-        </div>
-        <div class="team-card">
-          <div class="role-num">02</div>
-          <h3>AI & Automation</h3>
-          <p>Workflows, tooling, and AI-powered systems built around how your business actually runs.</p>
-        </div>
-        <div class="team-card">
-          <div class="role-num">03</div>
-          <h3>Ops & VA Support</h3>
-          <p>Recruitment, procurement, logistics, and other back-office work handled remotely.</p>
-        </div>
-      </div>
-      <div class="work-note reveal">Don't see what you need listed? Bring it up on the call — chances are we've got someone who can help.</div>
-    </div>
-  </section>
-
-  <!-- ============ FAQ ============ -->
-  <section id="faq">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div>
-          <div class="eyebrow">FAQ</div>
-          <h2>Questions, answered.</h2>
-        </div>
-        <p>Still curious about something? Bring it up on the call.</p>
-      </div>
-      <div class="faq-list reveal">
-        <details class="faq-item">
-          <summary>What kind of content do you edit?</summary>
-          <div class="faq-a">Mainly short-form social content — Reels, TikToks, and YouTube Shorts — scripted and captioned, ready to post.</div>
-        </details>
-        <details class="faq-item">
-          <summary>How long does a project take?</summary>
-          <div class="faq-a">Depends on your volume and how much footage you send. We'll walk through realistic timelines on your call.</div>
-        </details>
-        <details class="faq-item">
-          <summary>What do I need to send you to get started?</summary>
-          <div class="faq-a">Raw footage, filmed off the scripts and shot list our strategists send you. You drop it into a shared drive and we take it from there.</div>
-        </details>
-        <details class="faq-item">
-          <summary>Do you offer revisions?</summary>
-          <div class="faq-a">Every video is QA'd internally by a creative strategist before it reaches you, so what you get is meant to be ready to post. If something's off, we fix it.</div>
-        </details>
-        <details class="faq-item">
-          <summary>What formats do you deliver in?</summary>
-          <div class="faq-a">Typically vertical 9:16 for Reels, TikTok, and Shorts — captioned to your standard. Other formats on request.</div>
-        </details>
-        <details class="faq-item">
-          <summary>Do you work with businesses outside the US?</summary>
-          <div class="faq-a">Yes — everything runs through scripts, a shared drive, and calls, so location doesn't matter.</div>
-        </details>
-        <details class="faq-item">
-          <summary>How much does it cost?</summary>
-          <div class="faq-a">Depends on your content volume and scope. We'll walk through pricing on your call.</div>
-        </details>
-        <details class="faq-item">
-          <summary>How do I get started?</summary>
-          <div class="faq-a">Book a call above, or send us the details through the form and we'll follow up.</div>
-        </details>
       </div>
     </div>
   </section>
@@ -879,76 +227,11 @@
     </div>
     <div class="footer-bottom">
       <span>© 2026 Visybil Media. All rights reserved.</span>
-      <span>Scripts → Shoot → Edit → Caption → QA → Post</span>
     </div>
   </div>
 </footer>
 
-<script>
-  // mobile menu
-  const burger = document.getElementById('burgerBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const mobileClose = document.getElementById('mobileClose');
-  burger.addEventListener('click', () => mobileMenu.classList.add('open'));
-  mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
-
-  // cursor glow (desktop only)
-  const glow = document.getElementById('glow');
-  if (window.matchMedia('(pointer:fine)').matches) {
-    window.addEventListener('mousemove', (e) => {
-      glow.style.left = e.clientX + 'px';
-      glow.style.top = e.clientY + 'px';
-    });
-  } else {
-    glow.style.display = 'none';
-  }
-
-  // scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => io.observe(el));
-
-  // work grid — show more / show less
-  const showMoreBtn = document.getElementById('showMoreBtn');
-  if (showMoreBtn) {
-    showMoreBtn.addEventListener('click', () => {
-      const extras = document.querySelectorAll('#workGrid .more-video');
-      const expanded = showMoreBtn.dataset.expanded === 'true';
-      extras.forEach(card => card.classList.toggle('hidden', expanded));
-      showMoreBtn.dataset.expanded = String(!expanded);
-      showMoreBtn.querySelector('span').textContent = expanded ? 'Show More Work ↓' : 'Show Less ↑';
-    });
-  }
-
-  // contact form -> mailto fallback (no backend needed on GitHub Pages)
-  const contactForm = document.getElementById('contactForm');
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const data = new FormData(contactForm);
-    const name = data.get('name') || '';
-    const email = data.get('email') || '';
-    const company = data.get('company') || '';
-    const format = data.get('format') || '';
-    const message = data.get('message') || '';
-    const subject = encodeURIComponent('New inquiry from ' + name);
-    const body = encodeURIComponent(
-      'Name: ' + name + '\n' +
-      'Email: ' + email + '\n' +
-      'Business/Brand: ' + company + '\n' +
-      'Content Type: ' + format + '\n\n' +
-      'Message:\n' + message
-    );
-    window.location.href = 'mailto:visybilmedia@gmail.com?subject=' + subject + '&body=' + body;
-  });
-</script>
+<script src="main.js"></script>
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
 </body>
